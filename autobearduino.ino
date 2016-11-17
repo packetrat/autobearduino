@@ -30,16 +30,17 @@ void serialEvent()
 void loop()
 {
   if (animate == true){
-   for (val =120; val >= 1; val -= 10)
+   for (val =100; val >= 1; val -= 10)
    {
     myservo.write(val);
     delay(15);
     }
-   for (val = 1; val <= 120; val += 10)
+   for (val = 1; val <= 100; val += 10)
    {
      myservo.write(val);
-    delay(15);
+    delay(10);
    }
-       
+      
   }
+  else {myservo.write(179);}
 }
