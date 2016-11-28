@@ -2,7 +2,9 @@
 #include <Servo.h>
 
 Servo myservo;
-int val = 0; 
+int val = 0;
+int count = 0;
+int pose;
 char serialData;
 boolean animate = false;
 void setup()
@@ -30,17 +32,67 @@ void serialEvent()
 void loop()
 {
   if (animate == true){
-   for (val =100; val >= 1; val -= 10)
-   {
-    myservo.write(val);
-    delay(15);
-    }
-   for (val = 1; val <= 100; val += 10)
-   {
-     myservo.write(val);
-    delay(10);
-   }
-      
+   count = count + 1;
+   pose = count % 5;
+   if (pose == 4){
+     for (val =130; val >= 1; val -= 3)
+       {
+        myservo.write(val);
+        delay(18);
+        }
+       for (val = 1; val <= 130; val += 10)
+       {
+         myservo.write(val);
+         delay(18);
+       }
+      }
+  else if (pose == 3){
+    for (val =90; val >= 3; val -= 5)
+    {
+      myservo.write(val);
+        delay(18);
+        }
+       for (val = 3; val <= 90; val += 10)
+       {
+         myservo.write(val);
+         delay(18);
+        }
   }
-  else {myservo.write(179);}
-}
+   else if (pose == 2){
+    for (val =170; val >= 3; val -= 3)
+    {
+      myservo.write(val);
+        delay(8);
+        }
+       for (val = 3; val <= 90; val += 9)
+       {
+         myservo.write(val);
+         delay(18);
+        }
+   } 
+    else if (pose == 1){
+    for (val =129; val >= 3; val -= 5)
+    {
+      myservo.write(val);
+        delay(18);
+        }
+       for (val = 5; val <= 110; val += 10)
+       {
+         myservo.write(val);
+         delay(18);
+        } 
+       } 
+    else if (pose == 0){
+    for (val =80; val >= 1; val -= 4)
+    {
+      myservo.write(val);
+        delay(18);
+        }
+       for (val = 5; val <= 90; val += 10)
+       {
+         myservo.write(val);
+         delay(18);
+        } 
+    }
+   }
+}  
