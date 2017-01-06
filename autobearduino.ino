@@ -14,7 +14,7 @@ struct pose {
   byte delay;
 };
 
-pose poses[][2] = {
+const pose poses[][2] = {
     // from, to_boundary, step, delay
     // first is down, second is up
     { {80, 1, 4, 18}, {5, 90, 10, 18} },
